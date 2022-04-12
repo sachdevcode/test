@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import Table from 'react-bootstrap/Table'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -7,11 +9,14 @@ const TableRowComponent = ({data}) => {
   const {name,address,email} = data
   
   return(
+    <tbody>
+
     <tr>
       <td>{name}</td>
       <td>{email}</td>
       <td>{address}</td>
     </tr>
+    </tbody>
   )
 
 }
@@ -42,18 +47,20 @@ const App = props => {
   console.log(tableData)
   return(
     <div>
-      <table>
+      <Table striped bordered hover>
+      <thead>
         <tr>
-          <td>Name</td>
-          <td>Email</td>
-          <td>Address</td>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
         </tr>
+        </thead>
         {tableData.map(item=>{
           return(
             <TableRowComponent data={item}/>
           )
         })}
-      </table>
+      </Table>
     </div>
   )
 }
